@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useAction } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 type ChatMessage = {
   id: string;
@@ -13,7 +15,9 @@ export function useChat() {
   const [isLoading, setIsLoading] = useState(false);
   const [isFirstMessage, setIsFirstMessage] = useState(true);
 
-  const sendMessage = () => {
+  const askLLM = useAction(api.askLLM.askLLM);
+
+  const sendMessage = async () => {
     if (!inputValue.trim()) return;
 
     const userMessage: ChatMessage = {
@@ -28,20 +32,34 @@ export function useChat() {
     setIsFirstMessage(false);
     setIsLoading(true);
 
-    // Simula resposta da IA após 1.5s
-    setTimeout(() => {
+    try {
+      const botReply = await askLLM({ input: userMessage.content });
+
       const botMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         sender: "bot",
-        content: `🧠 Resposta mockada para: "${userMessage.content}"`,
+        content: botReply,
         timestamp: new Date(),
       };
+
       setMessages((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error("Convex/LLM error:", error);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString(),
+          sender: "bot",
+          content: "⚠️ There was an error. Please try again later.",
+          timestamp: new Date(),
+        },
+      ]);
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
-  const promptText = `Prompt sugerido para testar a IA`;
+  const promptText = `What does Voding do?`;
 
   return {
     messages,
