@@ -43,10 +43,10 @@ export function ChatInterfaceV2() {
   const lovablePrompt = () => {
     if (isFirstMessage) {
       return (
-        <div className="flex items-center px-2 py-1 border rainbow-border rounded-lg bg-white">
+        <div className="flex items-center px-2 py-1 border green-rainbow-border rounded-lg bg-white">
           <p className="flex-1 text-sm">
-            Quer integrar a Abacate usando Lovable? Preparamos um prompt para
-            você
+          Want to get to know Voding?
+          We've prepared a prompt for you.
           </p>
           <Button
             size="sm"

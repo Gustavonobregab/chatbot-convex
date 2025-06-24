@@ -96,8 +96,9 @@ export const ChatInterface = () => {
               className="flex items-center px-2 py-1 border rainbow-border rounded-lg bg-white"
             >
               <p className="flex-1 text-sm">
-                Quer integrar a Abacate usando Lovable? Preparamos um prompt
-                para você
+              Want to get to know Voding using Lovable?
+We've prepared a prompt for you.
+
               </p>
               <Button
                 size="sm"

@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="flex items-center px-8 gap-4 mt-2 w-full justify-between text-[#4C5267]">
       <div>
         <p className="font-semibold text-4 text-right align-middle">
-          AbacatePay @ {new Date().getFullYear()}
+          Voding @ {new Date().getFullYear()}
         </p>
       </div>
       <div className="flex gap-4 items-center">

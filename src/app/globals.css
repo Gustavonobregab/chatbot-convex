@@ -149,6 +149,22 @@
     background-origin: border-box;
     background-clip: padding-box, border-box;
   }
+  .green-rainbow-border {
+    position: relative;
+    border: double 2px transparent;
+    background-image:
+      linear-gradient(white, white),
+      linear-gradient(
+        to right,
+        #0b7327,  /* dark green */
+        #2ecc71,  /* emerald */
+        #9EEA6C,  /* neon green */
+        #2ecc71,
+        #0b7327
+      );
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
 }
 
 /* ---------------------------------------------------------------------------- */
