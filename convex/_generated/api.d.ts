@@ -13,9 +13,9 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
-import type * as chat_askQuestion from "../chat/askQuestion.js";
+import type * as askLLM from "../askLLM.js";
+import type * as companyData from "../companyData.js";
 import type * as data from "../data.js";
-import type * as internal_data_uploadCompanyData from "../internal/data/uploadCompanyData.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -26,9 +26,9 @@ import type * as internal_data_uploadCompanyData from "../internal/data/uploadCo
  * ```
  */
 declare const fullApi: ApiFromModules<{
-  "chat/askQuestion": typeof chat_askQuestion;
+  askLLM: typeof askLLM;
+  companyData: typeof companyData;
   data: typeof data;
-  "internal/data/uploadCompanyData": typeof internal_data_uploadCompanyData;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
